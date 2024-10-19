@@ -356,7 +356,7 @@ router eigrp 100
   redistribute ospf 1 metric 1544 2000 255 1 1500
 
 R1:
-!redistrubte internet routes to ospf from BGP.
+!redistrubte internet routes to ospf from BGP. BGP,OSPF
 config t
 router ospf 1
  default-information originate
