@@ -1356,3 +1356,53 @@ R20#
 ping vrf CORP 10.100.1.1 source e1/3.101
 !!!!!
 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IP SLA: SERVICE LEVEL AGREEMENT HANDS-ON PRACTICE
+R1-PLDT:
+config t
+no loggin console
+int gi 3
+no shut
+ip add 192.168.103.5 255.255.255.0
+do wr
+
+
+
+
+HSRP: Hot Standaby routing protocol: lowend Cisco "standby"
+vrrp: virtual router redundancy protocol: palo,fortinet,cisco "vrrp"
+glbp: global load blancing protocol: highendcisco "glbp"
+
+R1-PLDT main line:
+config t
+int gi 2
+standby version 2
+standby 1 ip 192.168.102.7
+standby 1 preempt
+standby 1 priority 150
+standby 1 track 5 decrecment 60
+exit
+ip sla 5
+icmp-echo 8.8.8.8
+freq 15
+exit
+ip sla schedule 5 life forever start-time now
+track 5 ip sla 5
+delay down 10 up 5 
+exit
+
+HSRP for globe backup:
+config t
+int gi 2
+standby version 2
+standby 1 ip 192.168.102.7
+standby 1 preempt
+standby 1 priority 101
+end
+
+
+
+
+
+
+
