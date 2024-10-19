@@ -141,6 +141,23 @@ conf t
 		end
 	sh ip eigrp nei
 
+
+
+P1: Floating Default Routes: primary/backup
+config t
+ip route 0.0.0.0 0.0.0.0 10.2.1.1 1
+ip route 0.0.0.0 0.0.0.0 10.2.1.2 5
+end
+
+
+P2: Floating Default Routes: primary/backup
+config t
+ip route 0.0.0.0 0.0.0.0 10.2.1.2 1
+ip route 0.0.0.0 0.0.0.0 10.2.1.1 5
+end
+
+
+
 R4:
 config t
 router eigrp 100
