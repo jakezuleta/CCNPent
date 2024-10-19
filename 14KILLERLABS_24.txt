@@ -1401,7 +1401,11 @@ standby 1 priority 101
 end
 
 
-
+HomeLAB
+ping 8.8.8.8
+ping 8:8:8:8::8888
+R1-pldt, r2-globe
+ip sla + hsrp
 
 
 
